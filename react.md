@@ -2,120 +2,41 @@
 
 Install [nodejs](./nodejs.md#install-using-nvm) first
 
-## Shadcn (vite)
+## Shadcn (Vite)
 
-Create vite project
+Creating Shadcn project using Vite from scratch
 
 ```sh
+# Create Vite project
 npm create vite@latest
 
+# Install the initial dependencies
 cd __PROJECT_NAME__
 npm install
-```
 
-**Optional**: To resolve compatibility issue with tailwind and shadcn later, downgrade React 19 into 18
-
-```sh
+# **Optional**: To resolve compatibility issue with tailwind and shadcn later, downgrade React 19 into 18
 npm install react@18 react-dom@18
-```
 
-Install tailwind
-
-```sh
+# Install tailwind
 npm install tailwindcss @tailwindcss/vite
-```
 
-Replace `/src/index.css`
+# Replace index.css with the one from this folder
 
-```css
-@import "tailwindcss";
-```
+# Replace tsconfig.json with the one from this folder
 
-Edit `tsconfig.json`
+# Replace tsconfig.app.json with the one from this folder
 
-```json
-{
-  // ...
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
-  // ...
-}
-```
+# Replace vite.config.ts with the one from this folder
 
-Edit `tsconfig.app.json`
-
-```json
-{
-  "compilerOptions": {
-    // ...
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-    // ...
-  }
-}
-```
-
-Edit `vite.config.ts`
-
-```ts
-import path from "path";
-import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
-
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-});
-```
-
-Init shadcn
-
-```sh
+# Init shadcn
 npx shadcn@latest init
-```
 
-Try to add button component
-
-```sh
+# Try to add button component
 npx shadcn@latest add button
-```
 
-Try to use the button component
+# Try to use the button component
+# Replace App.jsx with the one from this folder
 
-```jsx
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-
-function App() {
-  const [clickCount, setClickCount] = useState(0);
-
-  return (
-    <div className="flex flex-col items-center justify-center min-h-svh">
-      <Button onClick={() => setClickCount((prev) => prev + 1)}>
-        Click me
-      </Button>
-      Click count: {clickCount}
-    </div>
-  );
-}
-
-export default App;
-```
-
-Try to run the app
-
-```sh
+# Try to run the app
 npm run dev
 ```
